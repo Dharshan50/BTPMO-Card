@@ -32,14 +32,14 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
   public render(): void {
 
-    const siteURL = "https://localhost:4321/temp/workbench.html";
-    const apiURL = "https://localhost:7280/api";
+    // const siteURL = "https://localhost:4321/temp/workbench.html";
+    // const apiURL = "https://localhost:7280/api";
 
-    // const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
-    // const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
 
-    // var CurrentUserIdentifier = "0T5w5S8D9v0M0e6p7x1O2s6G9q9v6s";
-    var CurrentUserIdentifier = "7i6n7x8f5b1T7X1i1W0v0w7t0p6N6B";
+    var CurrentUserIdentifier = "0T5w5S8D9v0M0e6p7x1O2s6G9q9v6s";
+    // var CurrentUserIdentifier = "7i6n7x8f5b1T7X1i1W0v0w7t0p6N6B";
     var FormNo = 1;
     var ProjectIdentifier = "";
     var UpdateTask = 0;
