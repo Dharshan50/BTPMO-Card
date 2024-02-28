@@ -32,11 +32,11 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
   public render(): void {
 
-    // const siteURL = "https://localhost:4321/temp/workbench.html";
-    // const apiURL = "https://localhost:7280/api";
+    const siteURL = "https://localhost:4321/temp/workbench.html";
+    const apiURL = "https://localhost:7280/api";
 
-    const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
-    const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    // const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    // const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
 
     var CurrentUserIdentifier = "0z9q1S4z4B0E6U7c9N7D0A3U5F1m6p";
     var FormNo = 1;
@@ -138,6 +138,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     $(document).on('click', '.view_proj_data', function (e) {
+      FormNo = 1;
       var button = $(this);
       button.html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div> View');
       currStage = 0;
@@ -298,6 +299,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       arrow_id = "";
       console.log(identifier);
       ProjectReqObj.batchIdentifier = identifier;
+      ProjectIdentifier = identifier;
       $.ajax({
         url: apiURL + '/Project/GetProjects',
         type: 'POST',
