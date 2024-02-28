@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.1",
+    "libraryName": "btpmo-card",
+    "libraryId": "47552db8-c29a-4ee7-ad0c-cd86cddfdf66",
+    "environment": "spo"
+  }
+}

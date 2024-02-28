@@ -1,0 +1,18 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "btpmocardwebpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/btpmocardwebpart/BtpmocardwebpartWebPart.js",
+          "manifest": "./src/webparts/btpmocardwebpart/BtpmocardwebpartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BtpmocardwebpartWebPartStrings": "lib/webparts/btpmocardwebpart/loc/{locale}.js"
+  }
+}

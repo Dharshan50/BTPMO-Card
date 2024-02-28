@@ -1,0 +1,13 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "btpmo-card-client-side-solution",
+    "id": "47552db8-c29a-4ee7-ad0c-cd86cddfdf66",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true
+  },
+  "paths": {
+    "zippedPackage": "solution/btpmo-card.sppkg"
+  }
+}
