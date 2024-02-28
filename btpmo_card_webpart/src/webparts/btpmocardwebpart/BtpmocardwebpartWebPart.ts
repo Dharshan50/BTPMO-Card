@@ -32,13 +32,13 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
   public render(): void {
 
-    const siteURL = "https://localhost:4321/temp/workbench.html";
-    const apiURL = "https://localhost:7280/api";
+    // const siteURL = "https://localhost:4321/temp/workbench.html";
+    // const apiURL = "https://localhost:7280/api";
 
-    // const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
-    // const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
 
-    var CurrentUserIdentifier = "2H8H8c4x2l9X4a6Q1j6X";
+    var CurrentUserIdentifier = "0z9q1S4z4B0E6U7c9N7D0A3U5F1m6p";
     var FormNo = 1;
     var ProjectIdentifier = "";
     var UpdateTask = 0;
@@ -133,7 +133,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       $('#proj_summary_tbl').hide();
       $('#pagination_container').hide();
       $('#task_manage').hide();
-      // $('#upd_userlog_cmts').show();
+    //  $('#upd_userlog_cmts').show();
+      $('#tab_content_bt').hide();
     }
 
     $(document).on('click', '.view_proj_data', function (e) {
@@ -407,6 +408,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
         <input type="radio" id="tab2" name="tabGroup1" class="${styles.tab}">
         <label id="bt_task_tab" for="tab2">Task Management</label>
+        <!--<input type="radio" id="tab3" name="tabGroup1" class="${styles.tab}">
+        <label id="bt_proj_tab" for="tab3">Admin</label>-->
     </div>
 </div>
 <div id="proj_summary_tbl">
@@ -482,7 +485,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
             <label id="bt_proj_tab" for="task_inner_tab1" style="border-right: none;">All</label>
 
             <input type="radio" id="task_inner_tab2" name="task_inner_tabGroup1" class="${styles.task_inner_tab}" checked value = "2">
-            <label id="bt_task_tab" for="task_inner_tab2" style="border-right: none;">Assigned By Others</label>
+            <label id="bt_task_tab" for="task_inner_tab2" style="border-right: none;">Assigned By Me</label>
 
             <input type="radio" id="task_inner_tab3" name="task_inner_tabGroup1" class="${styles.task_inner_tab}" checked value = "3">
             <label id="bt_task_tab" for="task_inner_tab3">Assigned To Me</label>
@@ -1079,7 +1082,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     });
     $('#tsk_srch_icon').on('click', function () {
       if ($("#srch_tsk").val())
-        TasksearchVal = $("#projectSearchTerm").val()
+        TasksearchVal = $("#srch_tsk").val()
       else {
         TasksearchVal = "";
       }
@@ -1147,13 +1150,13 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                     </button>
                                 </h2>
                             </div> 
-                            <div class="${stageObj.stageName}_body" style="max-height:300px; overflow-y:scroll">`
+                            <div class="${stageObj.stageName}_body" style="max-height:300px; overflow-y:scroll" id = "stage_${stageObj.stageIdentifier}">`
 
               for (let j = 0; j < stageObj.tasks.length; j++) {
                 let taskObj = stageObj.tasks[j];
                 if (taskObj !== null && taskObj !== undefined) {
                   strHtml += `
-                                <div class="${styles.card_main_box}   show data_${stageObj.stageIdentifier}">
+                                <div class="${styles.card_main_box}   show data_${stageObj.stageIdentifier}" id = "card_main_${taskObj.taskIdentifier}">
                                     <div class="${styles.card_heda}">
                                         <div>
                                             <p class="${styles.card_head_para}">${taskObj.keyStep ? taskObj.keyStep : "N/A"}</p>
@@ -1175,7 +1178,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                         </div>
                                     </div>
                                     <div class="${styles.card_bdy}" id="card_bdy_${taskObj.taskIdentifier}">
-                                      
+                                        
                                         <!--<div class="${styles.edit_btn_card}">
                                             <button type="button" title="Edit" id="EditRecord_${taskObj.taskIdentifier}" class="btn btn-gray p-1 py-0 " style=" margin-top:5px !important; margin-right:10px !important;">
                                                 <i class="far fa-edit"></i> 
@@ -1450,7 +1453,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     $(document).on('click', "[id^='acc_']", function () {
-      //  //alert(1)
+     // alert(1)
       var temp_id = this.id;
       var splitArray = temp_id.split('_');
       var id = splitArray[splitArray.length - 1];
@@ -1473,11 +1476,11 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
             TaskId = id;
             currStage = i;
             $('.data_' + lst[i]).show();
-            $('#arrow_down_' + lst[i]).css("transform", "rotate(180deg)", "transition", "0.5s");
+            $('#arrow_down_' + lst[i]).css("transform", "rotate(180deg)");
           } else {
             // //alert(5)
             $('.data_' + lst[i]).hide();
-            $('#arrow_down_' + lst[i]).css("transform", "rotate(360deg)", "transition", "0.5s");
+            $('#arrow_down_' + lst[i]).css("transform", "rotate(360deg)");
 
           }
         }
@@ -1501,7 +1504,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       }
       else {
         $('#card_arrow_' + id).removeClass('fa-arrow-circle-UP')
-        $(`#card_bdy_${id}`).css({ 'max-height': '135px', 'transition': 'max-height:0.8s' });
+        $(`#card_bdy_${id}`).css({ 'max-height': '120px', 'transition': 'max-height:0.8s' });
         $('#card_arrow_' + id).addClass('fa-arrow-circle-down')
         arrow_id = "";
       }
@@ -1552,8 +1555,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       TaskIdentifier = id;
 
       var current_style = $(`#card_bdy_${id}`).css('max-height')
-      if (current_style === "135px") {
-        $(`#card_bdy_${id}`).css({ 'max-height': '135px', 'transition': 'max-height:0.8s' });
+      if (current_style === "120px") {
+        $(`#card_bdy_${id}`).css({ 'max-height': '120px', 'transition': 'max-height:0.8s' });
       }
 
       $(`#card_bdy_${id}`).css({ 'max-height': '1000px', 'transition': 'max-height:0.8s' });
@@ -1622,8 +1625,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       var current_style = $(`#card_bdy_${id}`).css('max-height')
       $(`[class^='card_main_p_tag_']`).css({'width' : ''});
 
-      if (current_style === "135px") {
-        $(`#card_bdy_${id}`).css({ 'max-height': '135px', 'transition': 'max-height:0.8s' });
+      if (current_style === "120px") {
+        $(`#card_bdy_${id}`).css({ 'max-height': '120px', 'transition': 'max-height:0.8s' });
       }
       arrow_id = "";
       // $(`card_arrow_${id}`).get(0).click();
@@ -3524,6 +3527,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     function goToTab1() {
+      $('#tab1').get(0).click();
       $('#proj_summary_tbl').show();
       $('#pagination_container').show();
       $('#tab_content_bt').show();
@@ -3540,6 +3544,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     function goToTab2() {
+      $('#tab_content_bt').show();
       $('#task_manage').show();
       task_hide_details();
       $('#proj_summary_tbl').hide();
@@ -3596,9 +3601,9 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       DoGetTaskManagementData();
     })
 
-    $('#srch_tsk').on('keyup', function () {
-      DoGetTaskManagementData();
-    })
+    // $('#srch_tsk').on('keyup', function () {
+    //   DoGetTaskManagementData();
+    // })
 
     function DoGetTaskManagementData() {
       ////alert('hi');
@@ -3686,7 +3691,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
           html_body += `<td>${data[i].taskAssignedto}</td>`;
           html_body += `<td  style = 'text-align:right'>${data[i].taskStartDate}</td>`;
           html_body += `<td  style = 'text-align:right'>${data[i].taskTargetDate}</td>`;
-          html_body += `<td>N/A</td>`
+          html_body += `<td>${data[i].referenceId}</td>`
           html_body += `</tr>`;
         }
         html_body += `</tbody>`;
@@ -3703,11 +3708,17 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     $(document).on('click', '#retrn_menu', function () {
-      goToTab1();
+      if(FormNo == 1){
+        goToTab1();
+      }
+      else if(FormNo == 2){
+        $('#tab2').get(0).click();
+      }
     })
 
     $(document).on('click', '.view_tsk_btn', function (e: any) {
       // var tsk_id = this.id;
+      FormNo = 2;
       var idparts = (this.id).split('_');
       var taskIdentifier =  idparts[0];
       var stageIdentifer = idparts[1];
@@ -3717,8 +3728,9 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       button.html('<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div> View');
       setTimeout(async () => {
         await Do_project_view(projectIdentifier);
-        // $(`#acc_${stageIdentifer}`).click();
-
+        //$(`#acc_${stageIdentifer}`).get(0).click();
+        //$(``)
+        $(`#acc_${stageIdentifer}`).click();
         for (let i = 0; i < lst.length; i++) {
           if (lst[i] === stageIdentifer) {
             TaskId = stageIdentifer;
@@ -3730,8 +3742,21 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
             $('#arrow_down_' + lst[i]).css("transform", "rotate(360deg)", "transition", "0.5s");
           }
         }
+        const cardContainer = $(`#stage_${stageIdentifer}`);
+        const card = $(`#card_main_${taskIdentifier}`);
 
-        $(`#card_bdy_${taskIdentifier}`).focus();
+        // Scroll to the card within the container
+        cardContainer.animate({
+            scrollTop: card.offset().top - cardContainer.offset().top + cardContainer.scrollTop()
+        }, 500);
+
+        // Highlight the card by adding a border
+        card.css({ 'border': '2px solid red' });
+
+        // Remove the border after a certain duration (e.g., 2 seconds)
+        setTimeout(() => {
+            card.css({ 'border': 'none' });
+        }, 3000);
         button.html('View');
       }, 500);
     });
