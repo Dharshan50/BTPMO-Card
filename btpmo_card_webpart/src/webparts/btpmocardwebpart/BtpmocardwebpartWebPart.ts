@@ -9,6 +9,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import styles from './BtpmocardwebpartWebPart.module.scss';
 import * as strings from 'BtpmocardwebpartWebPartStrings';
 
+
 import * as crypto from 'crypto-js';
 
 import * as $ from 'jquery';
@@ -389,6 +390,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       // $('.loading_container').hide()
       $("[class^='header_']").hide()
       $('.CanvasZone').css('max-width','100%');
+      $('.CanvasZone').css('padding','0px');
       $("[class^='pageContent_']").css('max-width','100%').css('position','none');
       $("#workbenchCommandBar").hide();
       $(".commandBarWrapper").hide();
@@ -396,14 +398,18 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       $("[class^='imageFrame']").hide()
       $("[class^='banner_']").hide()
     })
+   // const leaderImgSrc = require('coface-logo.png');
 
-    this.domElement.innerHTML = `<div class="container-fluid">
+    this.domElement.innerHTML = `<div class="container-fluid" style="margin-top:-15px;padding:0px !important;">
     <div class="${styles.loader_container_div} loading_container">
         <div class="${styles.loader}"></div>
         <p style="margin: 15px 10px;">Loading...</p>
     </div>
-<div class="container page_content mb-5" style="display:none" >
+<div class="page_content mb-5" style="display:none" >
 <div id="tab_content_bt">
+<div class="proj_title_head" id="proj_title">
+<h2 class="${styles.main_title_head}"><img src = "https://planet-uat.coface.dns/regions/APR/capnet%20site%20shared%20contents/COFACE_C_logo.jpg" alt = "" style="width: 70px;padding: 0px 5px; margin-top: -10px;"/>BT - PMO Tracker</h2>
+</div>
     <div class="${styles.tabwrap} mt-1">
         <input type="radio" id="tab1" name="tabGroup1" class="${styles.tab}">
         <label id="bt_proj_tab" for="tab1">Project Summary</label>
@@ -3647,7 +3653,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       html_head += `<th id='taskType' class = 'task_sort_field ${styles.small_column_width}'>Task Type</th>`;
       html_head += `<th id ='description' class = 'task_sort_field ${styles.small_column_width}'>Description</th>`;
       html_head += `<th id ='status' class = 'task_sort_field ${styles.small_column_width}'>Status</th>`;
-      html_head += `<th id ='assignedothers' class = 'task_sort_field ${styles.big_column_width}' style = 'min-width:145px !important;'>Assigned By Others</th>`;
+      html_head += `<th id ='assignedothers' class = 'task_sort_field ${styles.big_column_width}' style = 'min-width:145px !important;'>Assigned By Me</th>`;
       html_head += `<th id ='assignedme' class = 'task_sort_field ${styles.small_column_width}'>Assigned To</th>`;
       html_head += `<th id ='startdate' class = 'task_sort_field ${styles.small_column_width}'>Start Date</th>`;
       html_head += `<th id ='targetdate' class = 'task_sort_field ${styles.small_column_width}'>Target Date</th>`;
