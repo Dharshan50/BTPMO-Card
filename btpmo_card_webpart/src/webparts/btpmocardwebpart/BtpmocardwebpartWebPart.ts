@@ -33,13 +33,14 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
   public render(): void {
 
-    const siteURL = "https://localhost:4321/temp/workbench.html";
-    const apiURL = "https://localhost:7280/api";
+    // const siteURL = "https://localhost:4321/temp/workbench.html";
+    // const apiURL = "https://localhost:7280/api";
 
-    // const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
-    // const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
 
-    var CurrentUserIdentifier = "0z9q1S4z4B0E6U7c9N7D0A3U5F1m6p";
+    var CurrentUserIdentifier = "0T5w5S8D9v0M0e6p7x1O2s6G9q9v6s";
+    // var CurrentUserIdentifier = "7i6n7x8f5b1T7X1i1W0v0w7t0p6N6B";
     var FormNo = 1;
     var ProjectIdentifier = "";
     var UpdateTask = 0;
@@ -134,7 +135,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       $('#proj_summary_tbl').hide();
       $('#pagination_container').hide();
       $('#task_manage').hide();
-    //  $('#upd_userlog_cmts').show();
+      //  $('#upd_userlog_cmts').show();
       $('#tab_content_bt').hide();
     }
 
@@ -392,6 +393,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       $('.CanvasZone').css('max-width','100%');
       $('.CanvasZone').css('padding','0px');
       $("[class^='pageContent_']").css('max-width','100%').css('position','none');
+      $('.CanvasZone').css('max-width', '100%');
+      $("[class^='pageContent_']").css('max-width', '100%').css('position', 'none');
       $("#workbenchCommandBar").hide();
       $(".commandBarWrapper").hide();
       $(".ms-compositeHeader").hide();
@@ -1111,7 +1114,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     });
 
     function truncateString(str, maxLength = 30) {
-      if (str.length <= maxLength) {
+      if (str && str.length <= maxLength) {
         return str;
       } else {
         return str.slice(0, maxLength) + "...";
@@ -1461,7 +1464,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     $(document).on('click', "[id^='acc_']", function () {
-     // alert(1)
+      // alert(1)
       var temp_id = this.id;
       var splitArray = temp_id.split('_');
       var id = splitArray[splitArray.length - 1];
@@ -1568,7 +1571,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       }
 
       $(`#card_bdy_${id}`).css({ 'max-height': '1000px', 'transition': 'max-height:0.8s' });
-      $(`[class^='card_main_p_tag_']`).css({'width' : '100%'});
+      $(`[class^='card_main_p_tag_']`).css({ 'width': '100%' });
 
       $(`.project_input_${id}`).prop("disabled", false).css('cursor', 'auto');;
       $(`[class^='task_calender_${id}']`).show();
@@ -1631,7 +1634,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       BindProjectViewData();
 
       var current_style = $(`#card_bdy_${id}`).css('max-height')
-      $(`[class^='card_main_p_tag_']`).css({'width' : ''});
+      $(`[class^='card_main_p_tag_']`).css({ 'width': '' });
 
       if (current_style === "120px") {
         $(`#card_bdy_${id}`).css({ 'max-height': '120px', 'transition': 'max-height:0.8s' });
@@ -3551,7 +3554,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       $('#page_filter').val("10");
     }
 
-    function goToTab2() {
+    async function goToTab2() {
       $('#tab_content_bt').show();
       $('#task_manage').show();
       task_hide_details();
@@ -3559,7 +3562,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       $('#pagination_container').show();
       $('#task_tab3').get(0).click();
       $('#task_inner_tab1').get(0).click();
-      DoGetTaskManagementData();
+      await DoGetTaskManagementData();
       ProjectIdentifier = "";
       pageFlag = 2;
       $('#page_filter').val("10");
@@ -3716,10 +3719,10 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
     }
 
     $(document).on('click', '#retrn_menu', function () {
-      if(FormNo == 1){
+      if (FormNo == 1) {
         goToTab1();
       }
-      else if(FormNo == 2){
+      else if (FormNo == 2) {
         $('#tab2').get(0).click();
       }
     })
@@ -3728,7 +3731,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
       // var tsk_id = this.id;
       FormNo = 2;
       var idparts = (this.id).split('_');
-      var taskIdentifier =  idparts[0];
+      var taskIdentifier = idparts[0];
       var stageIdentifer = idparts[1];
       var projectIdentifier = idparts[2];
       //var Taskdata = { taskIdentifier: tsk_id, dateTask: 0, assignedFilter: 0, startPage: 0, noofPage: 10, sort: "", sortColumn: "", search: "", employeeIdentifier: CurrentUserIdentifier };
@@ -3755,7 +3758,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
         // Scroll to the card within the container
         cardContainer.animate({
-            scrollTop: card.offset().top - cardContainer.offset().top + cardContainer.scrollTop()
+          scrollTop: card.offset().top - cardContainer.offset().top + cardContainer.scrollTop()
         }, 500);
 
         // Highlight the card by adding a border
@@ -3763,7 +3766,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
         // Remove the border after a certain duration (e.g., 2 seconds)
         setTimeout(() => {
-            card.css({ 'border': 'none' });
+          card.css({ 'border': 'none' });
         }, 3000);
         button.html('View');
       }, 500);
