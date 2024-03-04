@@ -38,6 +38,17 @@
   height: 100vh;
   margin: 0;
 }
+.card_last_row{
+  display: flex;
+  justify-content: start;
+  gap: 72px;
+}
+
+@media (min-width:1390px) and (max-width:2000px) {
+  .card_last_row{
+    gap: 80px;
+  }
+}
 
 .loader {
   border: 8px solid #f3f3f3;

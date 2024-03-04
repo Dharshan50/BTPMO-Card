@@ -33,11 +33,11 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
   public render(): void {
 
-    // const siteURL = "https://localhost:4321/temp/workbench.html";
-    // const apiURL = "https://localhost:7280/api";
+    const siteURL = "https://localhost:4321/temp/workbench.html";
+    const apiURL = "https://localhost:7280/api";
 
-    const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
-    const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    // const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    // const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
 
     var CurrentUserIdentifier = "0T5w5S8D9v0M0e6p7x1O2s6G9q9v6s";
     // var CurrentUserIdentifier = "7i6n7x8f5b1T7X1i1W0v0w7t0p6N6B";
@@ -1255,9 +1255,9 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                             <div class="${styles.card_cnt_inner_even}" style = "width:70% !important;">
                                                 <p class="${styles.card_label}" style = "margin-bottom:0rem !important;">Task Description:</p>
                                                 <p class="${styles.card_main_p_tag}">
-                                                    <input type="text" id="task_taskDescription_${taskObj.taskIdentifier}" disabled
-                                                        class="form-control ${styles.card_label} table_input_box_chng_sml table_input_box_chng_sml_${taskObj.taskIdentifier}  project_input_${taskObj.taskIdentifier}"
-                                                        value='${taskObj.taskDescription}' style="font-size: 12px; cursor: not-allowed;padding: 3px 3px;">
+                                                <textarea id="task_taskDescription_${taskObj.taskIdentifier}" disabled
+                                                class="form-control ${styles.card_label} table_input_box_chng_sml table_input_box_chng_sml_${taskObj.taskIdentifier} project_input_${taskObj.taskIdentifier}"
+                                                style="font-size: 12px; cursor: not-allowed; padding: 3px 3px;">${taskObj.taskDescription}</textarea>                                            
                                                     <label class="project_label_${taskObj.taskIdentifier}"
                                                         title="${taskObj.taskDescription ? taskObj.taskDescription : "N/A"}" style="width : 100%; text-align: left; margin-bottom:0rem !important;">${taskObj.taskDescription ? taskObj.taskDescription : "N/A"}</label>
                                                 </p>
@@ -1386,7 +1386,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                                 </p>
                                             </div>
                                             </div>
-                                            <div class = "${styles.card_cnt}">
+                                            <div class = "${styles.card_last_row}">
                                             <div class="${styles.card_cnt_inner_even}">
                                                 <p class="${styles.card_label}" style = "margin-bottom:0rem !important;">Dependent TaskID : </p>
                                                 <p class="${styles.card_main_p_tag}">
@@ -1394,13 +1394,13 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                                     <label style=" width: 100px; text-align: left; margin-bottom:0rem !important;" class="project_label_${taskObj.taskIdentifier}">${taskObj.dependentId}</label>
                                                 </p>
                                             </div>
-                                            <div class="${styles.card_cnt_inner_odd}">
+                                           <!-- <div class="${styles.card_cnt_inner_odd}">
                                                 <p class="${styles.card_label}" style = "margin-bottom:0rem !important;">KeyStep : </p>
                                                 <p class="${styles.card_main_p_tag}">
                                                     <input type="text" id="task_keyStep_${taskObj.taskIdentifier}" class="form-control ${styles.card_label} table_input_box_chng_sml table_input_box_chng_sml_${taskObj.taskIdentifier}  project_input_${taskObj.taskIdentifier}" value='${taskObj.keyStep}' style="font-size: 12px; cursor: not-allowed;padding: 3px 3px;">
                                                     <label style=" width: 100px; text-align: left; margin-bottom:0rem !important;" class="project_label_${taskObj.taskIdentifier}" title="${taskObj.keyStep ? taskObj.keyStep : "N/A"}">${taskObj.keyStep ? taskObj.keyStep : "N/A"}</label>
                                                 </p>
-                                            </div>
+                                            </div>-->
                                             
                                             <div class="${styles.card_cnt_inner_odd} on">
                                                 <p class="${styles.card_label}" style = "margin-bottom:0rem !important;">BT Comments : </p>
@@ -1412,7 +1412,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                                 </p>
                                             </div>
                                             <div class="${styles.card_cnt_inner_even}">
-                                                <p class="${styles.card_label}" style = "margin-bottom:0rem !important;">PM Comments : </p>
+                                                <p class="${styles.card_label}" style = "margin-bottom:0rem !important;">PM Comments<span class="${styles.mandatory}">*</span> : </p>
                                                 <p class="${styles.card_main_p_tag}">
                                                     <input type="text" id="task_pmComments_${taskObj.taskIdentifier}"
                                                         class="form-control ${styles.card_label} table_input_box_chng_sml table_input_box_chng_sml_${taskObj.taskIdentifier}  project_input_${taskObj.taskIdentifier}"
