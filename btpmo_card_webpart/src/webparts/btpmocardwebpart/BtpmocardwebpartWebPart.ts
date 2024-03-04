@@ -33,11 +33,11 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
 
   public render(): void {
 
-    // const siteURL = "https://localhost:4321/temp/workbench.html";
-    // const apiURL = "https://localhost:7280/api";
+    const siteURL = "https://localhost:4321/temp/workbench.html";
+    const apiURL = "https://localhost:7280/api";
 
-    const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
-    const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    // const apiURL = "https://capleave-dev.coface.dns/BTPMO/api";
+    // const siteURL = "https://capleave-dev.coface.dns/BTPMO/api";
 
     var CurrentUserIdentifier = "0T5w5S8D9v0M0e6p7x1O2s6G9q9v6s";
     // var CurrentUserIdentifier = "7i6n7x8f5b1T7X1i1W0v0w7t0p6N6B";
@@ -408,7 +408,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
         <div class="${styles.loader}"></div>
         <p style="margin: 15px 10px;">Loading...</p>
     </div>
-<div class="page_content mb-5" style="display:none" >
+<div class="page_content " style="display:none" >
 <div id="tab_content_bt">
 <div class="proj_title_head" id="proj_title">
 <h2 class="${styles.main_title_head}"><img src = "https://planet-uat.coface.dns/regions/APR/capnet%20site%20shared%20contents/COFACE_C_logo.jpg" alt = "" style="width: 70px;padding: 0px 5px; margin-top: -10px;"/>BT - PMO Tracker</h2>
@@ -445,8 +445,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                     <tr >
                         <th class="${styles.small_column_width}">Actions</th>
                         <th id="projectId" class="${styles.small_column_width} project_grid_sort" >Project Id</th>
-                        <th id="projectName" class="${styles.big_column_width} project_grid_sort" >Project Name</th>
-                        <th id="tagName" class="${styles.big_column_width} project_grid_sort" >Tag Project Name</th>
+                        <th id="projectName" class="${styles.big_column_width} project_grid_sort" >Batch Name</th>
+                        <!-- <th id="tagName" class="${styles.big_column_width} project_grid_sort" >Tag Project Name</th> -->
                         <th id="projectSize" class="${styles.big_column_width} project_grid_sort" >Project Size</th>
                         <th id="deadline" class="${styles.small_column_width} project_grid_sort" >DeadLine</th>
                         <th id="targetGoLive" class="${styles.small_column_width} project_grid_sort" >Target-go-live</th>
@@ -548,7 +548,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
             </div>
         </div>
         <div class="create_proj_form" id="create_proj_form">
-            <div class="row ${styles.space_btw_fields}">
+            <div class="row ${styles.space_btw_fields}" style="margin-top: 7px !important" >
                 <!--
                     <div class="col-lg-2 col-12">
                         <label for="project_form_commonProjectName" class="form-label ${styles.label_txt_chng}">Project Name</label> <span class="${styles.mandatory}">*</span>
@@ -654,7 +654,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                     </div>
                 </div>
                 <div class="col-lg-2 col-12">
-                <label for="project_form_baPriority" class="form-label ${styles.label_txt_chng}">BA Priority</label> <span class="${styles.mandatory}">*</span>
+                <label for="project_form_baPriority" class="form-label ${styles.label_txt_chng}">BA+PM Priority</label> <span class="${styles.mandatory}">*</span>
             </div>
             <div class="col-lg-2 col-12">
                 <select class="form-select project_form_style ${styles.text_box_project}" id="project_form_baPriority">
@@ -680,7 +680,7 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                     </div>
 
                 </div>
-                <div class="col-lg-2 col-12">
+               <!-- <div class="col-lg-2 col-12">
                 <label for="project_form_devPriority" class="form-label ${styles.label_txt_chng}" id="proj_dev2">Dev Priority</label> <span class="${styles.mandatory}">*</span>
             </div>
             <div class="col-lg-2 col-12">
@@ -693,30 +693,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                     <option value="5">5</option>
                     <option value="6">6</option>
                 </select>
-            </div>
-                <div class="col-lg-2 col-12">
-                    <label for="project_form_tester1" class="form-label ${styles.label_txt_chng}">Tester 1</label>
-                </div>
-                <div class="col-lg-2 col-12">
-                    <div class="${styles.search_icon_grp}">
-                        <select class = "form-select project_form_style ${styles.text_box_project}" id = "project_form_tester1" placeholder = "">
-                        </select>
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="row ${styles.space_btw_fields}">
-                <div class="col-lg-2 col-12">
-                    <label for="project_form_tester2" class="form-label ${styles.label_txt_chng}">Tester 2</label>
-                </div>
-                <div class="col-lg-2 col-12">
-                    <div class="${styles.search_icon_grp}">
-                        <select class = "form-select project_form_style ${styles.text_box_project}" id = "project_form_tester2" placeholder = "">
-                        </select>
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-12">
+            </div> -->
+            <div class="col-lg-2 col-12">
                     <label for="project_form_functionId" class="form-label ${styles.label_txt_chng}">Function</label> <span class="${styles.mandatory}">*</span>
                 </div>
                 <div class="col-lg-2 col-12">
@@ -725,16 +703,40 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                     </select>
                 </div>
                 <div class="col-lg-2 col-12">
-                    <label for="project_form_priority" class="form-label ${styles.label_txt_chng}">Priority</label> <span class="${styles.mandatory}">*</span>
+                    <label for="project_form_priority" class="form-label ${styles.label_txt_chng}">Functional Priority</label> <span class="${styles.mandatory}">*</span>
                 </div>
                 <div class="col-lg-2 col-12">
                     <select id="project_form_priority" class="form-select project_form_style ${styles.text_box_project}">
                     
                     </select>
                 </div>
+                <!-- <div class="col-lg-2 col-12">
+                    <label for="project_form_tester1" class="form-label ${styles.label_txt_chng}">Tester 1</label> 
+                </div>
+                <div class="col-lg-2 col-12">
+                    <div class="${styles.search_icon_grp}">
+                        <select class = "form-select project_form_style ${styles.text_box_project}" id = "project_form_tester1" placeholder = "">
+                        </select>
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div> -->
             </div>
-            <div class="${styles.content_head_title} ${styles.space_btw_fields}">
-                <div class="${styles.content_title_head} mt-2">
+            <div class="row ${styles.space_btw_fields}">
+                <!-- <div class="col-lg-2 col-12">
+                    <label for="project_form_tester2" class="form-label ${styles.label_txt_chng}">Tester 2</label>
+                </div>
+                <div class="col-lg-2 col-12">
+                    <div class="${styles.search_icon_grp}">
+                        <select class = "form-select project_form_style ${styles.text_box_project}" id = "project_form_tester2" placeholder = "">
+                        </select>
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div> -->
+                
+                
+            </div>
+            <div class="${styles.content_head_title} " style = "padding-top:0px !important;">
+                <div class="${styles.content_title_head} ">
                     <h3 class="${styles.content_head_name}" style="margin-left: 4px !important;">Project Status</h3>
                 </div>
             </div>
@@ -1421,7 +1423,8 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
                                                 </p>
                                             </div>
                                             
-                                            <i onclick="click_on()" title="More Details" id="card_arrow_${taskObj.taskIdentifier}" class="fa-solid fa-ellipsis arrow_down card_arrow_${taskObj.taskIdentifier} ${styles.card_down_arrow}"></i>
+                                            <i title="Show More" id="card_arrow_${taskObj.taskIdentifier}" class="fa-solid fa-ellipsis arrow_down card_arrow_${taskObj.taskIdentifier} ${styles.card_down_arrow}"></i>
+                                         
                                         </div>
                                     </div>
                                    
@@ -1520,6 +1523,27 @@ export default class BtpmocardwebpartWebPart extends BaseClientSideWebPart<IBtpm
         arrow_id = "";
       }
     })
+
+
+    // JavaScript
+    $(document).on('click', `[id^='card_arrow_']`, function ()  {
+  var arrowIcon = this;
+  var isDetailsShown = arrowIcon.classList.contains('show-details');
+
+  if (isDetailsShown) {
+    // Hide details
+    console.log("m")
+    arrowIcon.classList.remove('show-details');
+    arrowIcon.title = "Show More";
+  } else {
+    // Show details
+    console.log("l")
+    arrowIcon.classList.add('show-details');
+    arrowIcon.title = "Show Less";
+  }
+})
+
+
 
 
     $(document).on("click", ".project_grid_sort", function () {
